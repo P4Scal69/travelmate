@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.travelmate.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>TravelMate</name>
-    <description>Smart Trip Planner & Travel Companion</description>
+    <description>Smart Trip Planner &amp; Travel Companion</description>
     <author email="student@stiwk2114.edu" href="https://example.edu">STIWK2114 Student</author>
 
     <content src="index.html" />
