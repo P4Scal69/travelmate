@@ -44,8 +44,17 @@ jobs:
           npx -y cordova@12 platform add android@12.0.0
           npx -y cordova@12 build android
 
+      - name: Locate APK (diagnostic)
+        if: always()
+        run: |
+          echo "Searching for APK..."
+          find build -name '*.apk' 2>/dev/null || true
+          echo "--- outputs dir ---"
+          ls -R build/app/platforms/android/app/build/outputs 2>/dev/null || echo "no outputs directory"
+
       - name: Upload APK
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: travelmate-apk
-          path: build/app/platforms/android/app/build/outputs/apk/debug/app-debug.apk
+          path: build/app/platforms/android/**/*.apk
