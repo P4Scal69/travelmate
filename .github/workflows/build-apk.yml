@@ -23,23 +23,21 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Install Cordova
-        run: npm install -g cordova
-
-      - name: Install Android SDK packages
+      - name: Accept licenses and install SDK packages
         run: |
+          export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$PATH"
           yes | sdkmanager --licenses
           sdkmanager "platforms;android-34" "build-tools;34.0.0" "platforms;android-33" "build-tools;33.0.0"
 
       - name: Build Cordova Android project
         run: |
           cd build
-          cordova create app com.travelmate.app TravelMate
+          npx -y cordova@12 create app com.travelmate.app TravelMate
           cp config.xml app/config.xml
           cp www/index.html app/www/index.html
           cd app
-          cordova platform add android@12.0.0
-          cordova build android
+          npx -y cordova@12 platform add android@12.0.0
+          npx -y cordova@12 build android
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
