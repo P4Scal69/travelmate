@@ -26,6 +26,11 @@ jobs:
       - name: Install Cordova
         run: npm install -g cordova
 
+      - name: Install Android SDK packages
+        run: |
+          yes | sdkmanager --licenses
+          sdkmanager "platforms;android-34" "build-tools;34.0.0" "platforms;android-33" "build-tools;33.0.0"
+
       - name: Build Cordova Android project
         run: |
           cd build
@@ -33,9 +38,7 @@ jobs:
           cp config.xml app/config.xml
           cp www/index.html app/www/index.html
           cd app
-          yes | sdkmanager --licenses
-          sdkmanager "platforms;android-33" "build-tools;33.0.0"
-          cordova platform add android
+          cordova platform add android@12.0.0
           cordova build android
 
       - name: Upload APK
