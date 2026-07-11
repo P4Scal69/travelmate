@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TravelMate — Project Report (STIWK2114)</title>
+<style>
+    :root { --primary:#0e7c66; --ink:#1c2733; --muted:#5b6b7c; --border:#d8e0e8; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); margin: 0; line-height: 1.55; }
+    .page { max-width: 820px; margin: 0 auto; padding: 40px 36px; }
+    h1, h2, h3 { color: var(--primary); }
+    h1 { font-size: 26px; margin: 0 0 4px; }
+    h2 { font-size: 20px; border-bottom: 2px solid var(--primary); padding-bottom: 6px; margin-top: 36px; }
+    h3 { font-size: 16px; margin-bottom: 6px; }
+    table.meta { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    table.meta td { border: 1px solid var(--border); padding: 8px 12px; }
+    table.meta td:first-child { width: 200px; background: #f3f7f6; font-weight: 600; }
+    .toc { background: #f6f9f8; border: 1px solid var(--border); border-radius: 10px; padding: 14px 22px; }
+    .toc ol { margin: 0; padding-left: 20px; }
+    .shot { border: 2px dashed var(--border); border-radius: 12px; padding: 26px; text-align: center; color: var(--muted); background: #fafcfb; margin: 12px 0 6px; font-style: italic; }
+    code { background: #eef3f2; padding: 2px 6px; border-radius: 5px; font-size: 13px; }
+    .small { font-size: 13px; color: var(--muted); }
+    @media print { body { font-size: 12px; } .page { padding: 0; } h2 { page-break-after: avoid; } .shot { page-break-inside: avoid; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+    <h1>TravelMate — Smart Trip Planner &amp; Travel Companion</h1>
+    <p class="small">STIWK2114 Mobile Programming · Project Report</p>
+
+    <h2>Front Page</h2>
+    <table class="meta">
+        <tr><td>Project Title</td><td>TravelMate — Smart Trip Planner &amp; Travel Companion</td></tr>
+        <tr><td>Student Name</td><td>[Your Name]</td></tr>
+        <tr><td>Matric Number</td><td>[MATRIC-XXXX]</td></tr>
+        <tr><td>Course Code</td><td>STIWK2114</td></tr>
+        <tr><td>Group / Class</td><td>[Group / Class]</td></tr>
+        <tr><td>Lecturer's Name</td><td>[Lecturer Name]</td></tr>
+        <tr><td>Framework</td><td>WebView-Hybrid (Cordova + PHP/MySQL web app)</td></tr>
+    </table>
+
+    <h2>Table of Contents</h2>
+    <div class="toc"><ol>
+        <li>Introduction</li>
+        <li>System Features and Screenshots</li>
+        <li>Conclusion and Future Enhancement</li>
+        <li>AI Utilization and Transparency</li>
+    </ol></div>
+
+    <h2>1. Introduction</h2>
+    <p><b>Background.</b> TravelMate is a mobile application built with a WebView-hybrid approach: a PHP + MySQL web application rendered inside an Android WebView (packaged with Apache Cordova), combining web productivity with native device access.</p>
+    <p><b>Theme.</b> Tourism / travel planning — a real-life theme that exercises databases, maps, device sensors, and live data.</p>
+    <p><b>Purpose.</b> Let users register, add and manage planned trips (destination, country, date, budget, rating, notes, photo, GPS location), view them on a map, and check live weather at each destination.</p>
+    <p><b>Main features.</b> Login/registration with PHP sessions; full CRUD on trips; mobile-friendly UI with bottom navigation across 6 screens; jQuery/JS interaction; device features (GPS, camera, battery); third-party libraries Leaflet + Chart.js; external Open-Meteo weather API; localStorage preferences; installable Android APK via Cordova.</p>
+
+    <h2>2. System Features and Screenshots</h2>
+    <p class="small">All screens were tested live on a PHP server; every CRUD operation was verified.</p>
+
+    <h3>Screen 1 — Login / Register (<code>index.php</code>)</h3>
+    <p>Account entry using a PHP session. Toggle between Sign In and Create Account. Demo login: <code>student</code> / <code>student123</code>.</p>
+    <div class="shot">[ Insert screenshot: screens/login.png ]</div>
+
+    <h3>Screen 2 — Home / Dashboard (<code>home.php</code>)</h3>
+    <p>Greeting, summary cards, next upcoming trip, recent trips, and a "Weather near you" card that uses <b>GPS</b> to fetch live weather from Open-Meteo.</p>
+    <div class="shot">[ Insert screenshot: screens/home.png ]</div>
+
+    <h3>Screen 3 — My Trips / Search (<code>trips.php</code>)</h3>
+    <p>Lists all trips as cards with a <b>search</b> box (server-side + instant client-side filter) and Edit / Delete actions — the List and Search parts of CRUD.</p>
+    <div class="shot">[ Insert screenshot: screens/trips.png ]</div>
+
+    <h3>Screen 4 — Add / Edit Trip (<code>trip_form.php</code>)</h3>
+    <p>The Add and Update parts of CRUD. Includes a <b>📍 GPS</b> button (geolocation) and a <b>camera</b> input (<code>capture="camera"</code>) to attach a photo. Client + server validation applied.</p>
+    <div class="shot">[ Insert screenshot: screens/form.png ]</div>
+
+    <h3>Screen 5 — Trip Detail (<code>trip_detail.php</code>)</h3>
+    <p>Full trip info, attached photo, a <b>Leaflet map</b> marker at the trip's GPS coordinates, and a <b>weather</b> card loading live conditions via Open-Meteo. Edit / Delete provided.</p>
+    <div class="shot">[ Insert screenshot: screens/detail.png ]</div>
+
+    <h3>Screen 6 — Profile / Stats (<code>profile.php</code>)</h3>
+    <p>User summary, a <b>Chart.js</b> budget bar chart, <b>localStorage</b> preferences (dark mode), and <b>device</b> info (battery via <code>navigator.getBattery</code>). Logout included.</p>
+    <div class="shot">[ Insert screenshot: screens/profile.png ]</div>
+
+    <h3>Database operations</h3>
+    <p>The <code>trips</code> table (12 fields, mixed types, <code>id</code> as unique primary key) was created from <code>sql/schema.sql</code>. Add / Update / Delete / Search / List were all executed and verified through the UI.</p>
+
+    <h2>3. Conclusion and Future Enhancement</h2>
+    <p><b>Summary.</b> TravelMate meets all stated requirements: a tourism theme, a relational database with a rich <code>trips</code> table, full CRUD, a mobile-first interface, PHP server-side processing, jQuery/JS interaction, sessions + localStorage, GPS + camera + battery device features, the Leaflet and Chart.js libraries, and the Open-Meteo weather API.</p>
+    <p><b>Achievements.</b> Working end-to-end app verified on a live PHP/MySQL server; clean modern UI; real device features and a real external API integrated and tested.</p>
+    <p><b>Limitations.</b> The WebView loads a remote URL (needs network); photos stored on the server filesystem; weather shows current conditions only.</p>
+    <p><b>Future work.</b> Offline cache / local storage; trip sharing and day-planning; push notifications and weather alerts; multi-currency budgets; cloud photo storage.</p>
+
+    <h2>4. AI Utilization and Transparency</h2>
+    <p>See the separate file <code>docs/ai-utilization.md</code> (also submitted as AI evidence). It covers: (a) AI prompts used, (b) strategy when using AI, (c) main uses (initial code, UI design, logic explanation, debugging, PHP/database, API integration), and (d) a reflection on AI's role. In short, AI was used as a draft generator and pair-programmer; all output was adapted, run, and verified before inclusion.</p>
+
+</div>
+</body>
+</html>

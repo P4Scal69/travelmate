@@ -1,0 +1,6 @@
+includes/config.php
+assets/uploads/*
+!assets/uploads/.gitkeep
+.htaccess
+node_modules/
+.DS_Store

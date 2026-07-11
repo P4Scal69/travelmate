@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>TravelMate</title>
+    <style>
+        html, body { margin: 0; height: 100%; font-family: -apple-system, system-ui, sans-serif; background: #0a5e4e; color: #fff; }
+        #splash { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
+        .logo { font-size: 56px; }
+        h1 { font-weight: 700; margin: 10px 0 4px; }
+        p { opacity: .85; }
+        .spin { margin-top: 18px; width: 30px; height: 30px; border: 3px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: r 1s linear infinite; }
+        @keyframes r { to { transform: rotate(360deg); } }
+        .err { color: #ffd2d2; max-width: 80%; }
+    </style>
+</head>
+<body>
+    <div id="splash">
+        <div class="logo">✈️</div>
+        <h1>TravelMate</h1>
+        <p>Loading your travel companion…</p>
+        <div class="spin"></div>
+        <p id="msg" class="err"></p>
+    </div>
+
+    <script>
+        // Remote PHP web application (hosted on the server / XAMPP).
+        // For the Android emulator, 10.0.2.2 maps to the host machine's localhost.
+        // Change this to your hosted URL (e.g. https://travelmate.example.com/) for production.
+        var APP_URL = 'https://travelmate.freehosting.dev/index.php';
+
+        window.location.replace(APP_URL);
+    </script>
+</body>
+</html>
